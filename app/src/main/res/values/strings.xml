@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">converter1</string>
     <string name="EYD">Enter Your Date Of Birth</string>
-    <string name="SlectConv">Please Select your Converter Type</string>
+    <string name="SlectConv">Please Select your Converter Type By Menu </string>
     <string name="GtoJ">Gregorian to Jalali</string>
     <string name="GJ">gregorian to jalali</string>
     <string name="JG"> jalali to gregorian</string>
     <string name="YD">Your Date</string>
+    <string name="item1">Jalali To Gregoryan</string>
+    <string name="item2">Gregoryan To Jalali</string>
 </resources>
