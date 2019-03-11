@@ -7,23 +7,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import java.lang.reflect.Array;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
-    public byte convTypeFlag = 0;
+    public byte conTypeFlag = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +34,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        TextView convStat = (TextView) findViewById(R.id.converter_state);
         switch (item.getItemId()) {
             case R.id.j2g: {
-                convTypeFlag = 0;
+                conTypeFlag = 0;
+                convStat.setText("jilli to Gregorian");
                 break;
             }
             case R.id.g2j: {
-                convTypeFlag = 1;
+                conTypeFlag = 1;
+                convStat.setText("Gregorian to jilli");
                 break;
             }
         }
@@ -58,19 +53,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         try {
-            EditText editTextDate = (EditText) findViewById(R.id.edit_text_date);
-            TextView textResult = (TextView) findViewById(R.id.textViewResult);
-            TextView edtxtConvState = (TextView) findViewById(R.id.converter_state);
+            EditText editTextDate = findViewById(R.id.edit_text_date);
+            TextView textResult = findViewById(R.id.textViewResult);
             String dateStr = editTextDate.getText().toString();
             String[] splitStr = dateStr.split("/");
             int year = Integer.parseInt(splitStr[0]);
             int month = Integer.parseInt(splitStr[1]);
             int day = Integer.parseInt(splitStr[2]);
-            if (convTypeFlag == 0) {
-                textResult.setText(Arrays.toString(Convert.jalali_to_gregorian(year, month, day)) + ("Cristian"));
+            if (conTypeFlag == 0) {
+                textResult.setText(Arrays.toString(Convert.jilli_to_gregorian(year, month, day)) + ("Cristian"));
 
-            } else if (convTypeFlag == 1) {
-                textResult.setText(Arrays.toString(Convert.gregorian_to_jalali(year, month, day)) + ("Jalali"));
+            } else if (conTypeFlag == 1) {
+                textResult.setText(Arrays.toString(Convert.gregorian_to_jilli(year, month, day)) + ("Jalali"));
             }
 
         } catch (Exception e) {

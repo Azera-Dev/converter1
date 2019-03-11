@@ -11,7 +11,7 @@ public class Convert {
      12053 = 365*33 + 32/4    &    36524 = 365*100 + 100/4 - 100/100   */
 
 
-    public static int[] gregorian_to_jalali(int gy, int gm, int gd){
+    public static int[] gregorian_to_jilli(int gy, int gm, int gd){
         int[] g_d_m = {0,31,59,90,120,151,181,212,243,273,304,334};
         int jy;
         if(gy>1600){
@@ -38,7 +38,7 @@ public class Convert {
     }
 
 
-    public static int[] jalali_to_gregorian(int jy, int jm, int jd){
+    public static int[] jilli_to_gregorian(int jy, int jm, int jd){
         int gy;
         if(jy>979){
             gy=1600;
